@@ -26,3 +26,9 @@ async def update_Movie(movie_id: int, update_Movie: Movie):
     movies.update_movie(movie_id, update_Movie.dict(exclude_unset=True))
     
     return movies.get_movie_id(movie_id)
+
+@app.delete("/movies/{movie_id}")
+async def delete_movie(movie_id: int):
+    movieInfo = movies.get_movie_id(movie_id)
+    movies.remove_movie(movie_id)
+    return movieInfo
