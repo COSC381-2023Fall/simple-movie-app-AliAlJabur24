@@ -36,8 +36,10 @@ class Movies:
         
     def update_movie(self, movie_id, newMovieInfo):
          self._movies[movie_id - 1] = newMovieInfo
-         
          return
-
+    def remove_movie(self, movie_id):
+        self._movies[movie_id - 1] = None
+        return
+        
 if __name__ == "__main__":
     movies = Movies('./movies.txt')
