@@ -34,6 +34,10 @@ class Movies:
     def get_movie_id(self, movie_id):
         return self._movies[movie_id - 1]
         
+    def update_movie(self, movie_id, newMovieInfo):
+         self._movies[movie_id - 1] = newMovieInfo
+         
+         return
 
 if __name__ == "__main__":
     movies = Movies('./movies.txt')
