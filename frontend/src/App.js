@@ -16,7 +16,6 @@ function App() {
     try{
       const response = await fetch(`http://127.0.0.1:8000/movies/${inputText}`);
       const data = await response.json();
-      alert(data.name);
       setApiReponse(data.name);
     }
     catch (error){
@@ -29,6 +28,7 @@ function App() {
       <div className="centered">
         <input type="text" placeholder="Enter Movie ID"  value={inputText} onChange={HandleInput} />
         <button onClick={handleSubmit}> Find Movie </button>
+        {apiReponse && <div>{JSON.stringify(apiReponse)}</div>}
       </div>
     </div>
   );
