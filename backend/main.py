@@ -12,7 +12,11 @@ class Movie(BaseModel):
     movie_id: int = None
     movie_name: str = None
     Cast: list = None
-    
+
+class Add_Movie(BaseModel):
+    movie_id: int = None
+    movie_name: str = None
+    Cast: list = None
 
 @app.get("/movies/{movie_id}")
 async def read_movie(movie_id: int):
@@ -32,3 +36,7 @@ async def delete_movie(movie_id: int):
     movieInfo = movies.get_movie_id(movie_id)
     movies.remove_movie(movie_id)
     return movieInfo
+
+@app.post("/movies/{movie_id}")
+async def add_movie(update_Movie: Add_Movie):
+    return movies.add_movie(update_Movie.dict(exclude_unset=True))
