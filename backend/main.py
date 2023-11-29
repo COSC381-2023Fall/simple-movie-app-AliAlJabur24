@@ -3,10 +3,20 @@ from movies import Movies
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from typing import Optional
+from fastapi.middleware.cors import CORSMiddleware
 
 movies = Movies(r'C:\Users\Ali Al-Jabur\Desktop\OpenSea Chatbox\simple-movie-app-AliAlJabur24\backend\movies.txt')
 
 app = FastAPI()
+
+## Had to setup middleware for react request to go through
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 class Movie(BaseModel):
     movie_id: int = None
