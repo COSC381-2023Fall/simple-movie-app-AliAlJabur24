@@ -30,7 +30,6 @@ class Movies:
                     'cast': movie_cast
                 }
             )
-    
     def get_movie_id(self, movie_id):
         return self._movies[movie_id - 1]
         
@@ -40,6 +39,11 @@ class Movies:
     def remove_movie(self, movie_id):
         self._movies[movie_id - 1] = None
         return
+    def add_movie(self, newMovieInfo):
+        newMovieInfo['movie_id'] = (len(self._movies) + 1)
+        self._movies.append(newMovieInfo)
+        return self.get_movie_id(len(self._movies))
+        
         
 if __name__ == "__main__":
     movies = Movies('./movies.txt')
